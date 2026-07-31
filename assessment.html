@@ -1,0 +1,41 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="author" content="gyu"><title>수행평가 설계 도우미</title><link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet"><link rel="stylesheet" href="styles.css"><script src="teacher-standards.js"></script><script src="common.js"></script></head><body>
+<header class="hero"><div class="wrap"><span class="hero-badge">ASSESSMENT DESIGN</span><h1>수행평가 설계 도우미</h1><p>성취기준에서 출발해 학생의 선택·방법·피드백·수정이 관찰되는 평가를 설계합니다.</p></div></header>
+<nav class="topnav"><div class="wrap navrow"><a href="index.html">처음</a><a class="active" href="assessment.html">수행평가 설계</a><a href="record-check.html">세특 점검·검수</a><span class="navspacer"></span><span class="privacy-chip">학생 개인정보 입력 불필요</span></div></nav>
+<main class="page"><div class="wrap">
+<div class="callout"><b>설계 원칙</b> 성취기준 기반 루브릭과 성장과정 보조척도를 구분합니다. 0~4 성장단계는 과정 관찰과 피드백에 활용하며, 그 자체를 교과 성취도 점수로 사용하지 않습니다.</div>
+<div class="section-title"><h2>1. 기본 조건</h2><p><span class="req">*</span>는 프롬프트 생성에 필요한 최소 항목입니다.</p></div>
+<div class="card"><div class="grid two">
+<div class="field"><label>과목 <span class="req">*</span></label><input type="text" id="a_subject" placeholder="예: 통합사회"></div>
+<div class="field"><label>학년</label><select id="a_grade"><option value="">선택</option><option>1학년</option><option>2학년</option><option>3학년</option></select></div>
+<div class="field"><label>단원·주제 <span class="req">*</span></label><input type="text" id="a_unit" placeholder="예: 인권 보장과 헌법"></div>
+<div class="field"><label>운영 차시 <span class="req">*</span></label><input type="number" id="a_periods" min="1" max="20" value="3"></div>
+</div>
+<div class="field"><label>성취기준 <span class="req">*</span></label><textarea id="a_standard" placeholder="교육과정 성취기준을 그대로 붙여넣으세요. 성취기준 DB는 제공하지 않습니다."></textarea></div>
+<div class="grid two"><div class="field"><label>평가 방식</label><select id="a_format"><option>보고서</option><option>발표</option><option>실험·관찰</option><option>토론</option><option>제작·코딩</option><option>포트폴리오</option><option>복합형</option></select></div><div class="field"><label>운영 형태</label><select id="a_group"><option>개인</option><option>모둠</option><option>개인+모둠 혼합</option></select></div></div>
+<div class="field"><label>수업 환경과 제약</label><textarea id="a_constraints" placeholder="예: 교실 내 3차시, 스마트폰 사용 가능, 별도 재료비 없음, 가정 과제 최소화"></textarea></div>
+</div>
+
+<div class="section-title"><h2>2. 평가 목적과 탐구 방법</h2></div>
+<div class="card"><label class="small"><b>평가하려는 핵심 역량을 2~4개 선택하세요.</b></label><div id="purposeChecks" class="checkgrid" style="margin-top:9px"></div>
+<div class="field" style="margin-top:16px"><label>주요 탐구 방식</label><select id="a_method"></select><div id="methodHint" class="callout"></div></div>
+<div class="field"><label>수행평가 대주제 또는 문제 상황</label><textarea id="a_topic" placeholder="예: 학교 주변에서 확인할 수 있는 인권 문제를 조사하고 개선안을 제안한다."></textarea></div></div>
+
+<div class="section-title"><h2>3. 학생 선택과 과정 설계</h2></div>
+<div class="card"><div class="grid two">
+<div class="field"><label>학생이 직접 선택할 부분</label><textarea id="a_choice" placeholder="대상·공간·시간·변수·자료·역할 중 학생이 선택할 항목"></textarea></div>
+<div class="field"><label>교사가 공통으로 제공할 조건</label><textarea id="a_fixed" placeholder="공통 개념, 최소 자료 수, 시간, 윤리·안전 기준"></textarea></div>
+<div class="field"><label>중간 피드백 장면</label><textarea id="a_feedback" placeholder="예: 2차시 중간에 질문 범위와 자료 신뢰도에 대해 동료·교사 피드백"></textarea></div>
+<div class="field"><label>수정 후 남길 증거</label><textarea id="a_revision" placeholder="예: 수정 전후 질문, 제외한 자료와 이유, 설계 변경 기록"></textarea></div>
+</div>
+<details><summary>성장과정 0~4단계 참고</summary><div class="details-body"><div id="growthTable" class="tablewrap"></div></div></details></div>
+
+<div class="section-title"><h2>4. AI 활용 범위</h2></div>
+<div class="card"><div class="grid two"><div class="field"><label>AI 사용 정책</label><select id="a_ai_policy"><option>사용하지 않음</option><option>검색어·아이디어 제안만 허용</option><option>자료 구조화·반론 탐색까지 허용</option><option>초안 작성 허용, 검증 기록 필수</option><option>교사가 범위를 직접 입력</option></select></div><div class="field"><label>AI를 사용하지 않는 학생의 대안</label><input type="text" id="a_ai_alt" placeholder="예: 교사 제공 자료와 질문 카드 사용"></div></div><div class="field"><label>학생이 반드시 직접 해야 할 일</label><textarea id="a_student_owned" placeholder="원자료 확인, 조사·실험 수행, 결과 해석, 수정 이유 설명 등"></textarea></div></div>
+
+<div class="section-title"><h2>5. 과제 과대·공정성 점검</h2><p>모두 체크해야만 생성되는 잠금장치가 아니라, 위험요소를 눈에 보이게 하는 점검표입니다.</p></div>
+<div class="card"><div id="taskChecks" class="checkgrid"></div><div id="riskSummary" class="callout warn" style="margin-top:14px"></div></div>
+
+<div class="section-title"><h2>6. 프롬프트 생성</h2></div>
+<div class="card"><div class="toolbar"><div class="grow small">AI가 수행평가안을 대신 결정하는 것이 아니라, 교사가 입력한 조건을 상세 설계하도록 요청합니다.</div><button class="btn teal" id="generateBtn">프롬프트 생성</button><button class="btn outline" id="copyBtn">복사</button><button class="btn outline" id="saveBtn">설계 JSON 저장</button><label class="btn outline" for="loadFile" style="cursor:pointer">불러오기</label><input id="loadFile" class="hidden" type="file" accept="application/json"></div><pre id="promptOutput" class="output" style="margin-top:12px">필수 항목을 입력한 뒤 프롬프트를 생성하세요.</pre></div>
+</div></main><footer class="footer">수행평가 설계 결과는 반드시 해당 교과 성취기준과 학교 평가계획에 맞게 교사가 최종 검토하세요.</footer>
+<script src="assessment.js"></script></body></html>
