@@ -2,7 +2,7 @@
   'use strict';
 
   global.TEACHER_STANDARDS = {
-    version: '1.1.0',
+    version: '1.2.0',
     product: '교사 수업·평가·기록 설계실',
     qmrl: [
       { key: 'question', label: '질문', desc: '학생이 궁금한 점이나 해결할 문제를 구체화함' },
