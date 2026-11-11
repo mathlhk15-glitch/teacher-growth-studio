@@ -54,6 +54,15 @@ function makePrompt(){var d=collect();if(!d.subject||!d.unit||!d.periods||!d.sta
 다음 단계는 교과 성취도 점수 자체가 아니라 과정 관찰과 피드백을 위한 보조척도로만 사용하라.
 ${T.growthLevels.map(function(g){return '- '+g.level+' '+g.label+': '+g.evidence}).join('\n')}
 
+# 학교 기본형 기준(진짜 탐구 수행평가 v2.1)
+- 과제 문장틀: "[교과 개념·기능]을 사용해 [문제 해결·분석·표현 활동]을 수행하고, [근거]를 바탕으로 결과를 설명·판단하시오. [새 조건·반례·피드백]을 검토해 판단을 유지·수정·변경·보류한 이유를 밝히시오." 이 틀을 성취기준에 맞게 변형해 과제 문구를 작성할 것.
+- 운영 흐름: 설계(질문·방법·선택 이유) → 수행·분석·점검(직접 수행, 개념 적용, 새 자료·조건·피드백 검토) → 판단·성찰(판단 이유·한계·다음 질문). 핵심 증거는 A 계획 카드·B 수행·분석 기록·C 최종 판단의 3묶음이며 종이 세 장을 강제하지 않음.
+- 배점 원칙: 참고 예시는 문제 이해·접근 설계 10, 근거 선택·활용 20, 교과 개념 분석·수행 35, 판단의 타당성·점검 25, 개인 설명·성찰 10. 교과에 맞게 조정하되 분석+판단 합계는 55~65점을 권장. 분량·디자인·사진 수·자료 개수·수정 횟수는 핵심 배점으로 삼지 말 것(표현 자체가 성취기준이면 예외).
+- 판단: 유지·수정·변경·보류 모두 근거가 타당하면 높은 수준으로 인정. 보류는 부족한 정보와 이유를 밝혀야 함. 생각이 바뀌어야 높은 점수를 받는 구조로 만들지 말 것.
+- 공통 의무가 아닌 것: 모든 과목 비교 실험, 직접 측정한 숫자만 근거로 인정, 결론 변경이나 추가 실험 필수, 전 교과 동일 배점, 모든 수행평가의 탐구형 전환.
+- AI 신호등: 초록(허용) 질문 아이디어·개념 설명·자료·출처 탐색 보조 / 노랑(과제별 결정) 결과 해석·초안 수정·코드·표·그래프 보조 / 빨강(금지) 하지 않은 실험 데이터·없는 출처 만들기, 사전에 금지한 대필·대리 수행.
+- 채점: 같은 오류를 여러 요소에서 반복 감점하지 않음. 향상 폭만으로 점수를 주지 않음. 누락은 해당 요소에서, 증거 부족은 확인된 성취만 인정, 결시·미제출·허위·표절은 학교 규정에 따름.
+
 # 현재 추가 검토가 필요한 운영 위험
 ${unchecked.length?unchecked.map(function(x){return '- '+x}).join('\n'):'- 핵심 위험 항목을 사전 점검함. 그래도 실제 학교 평가계획과 공정성을 재확인할 것.'}
 
@@ -65,7 +74,7 @@ ${unchecked.length?unchecked.map(function(x){return '- '+x}).join('\n'):'- 핵�
 5. 학생 선택권과 공통 조건
 6. 중간 피드백 및 수정 절차
 7. 최종 제출물과 과정 증거
-8. 성취기준 기반 루브릭 3~4개 요소: 추상적인 '우수·보통·미흡' 대신 관찰 가능한 행동으로 기술
+8. 성취기준 기반 루브릭 3~5개 요소와 배점: 추상적인 '우수·보통·미흡' 대신 관찰 가능한 행동으로 기술하고, 분석과 판단 요소의 역할이 겹치지 않게 구분(분석=자료 해석과 개념 적용의 정확성, 판단=근거에서 결론이 나오는지와 점검 뒤 정당화)
 9. 성장과정 보조척도 활용 방법: 점수화하지 말고 자기점검·피드백 문장으로 제시
 10. AI 사용 기준과 AI 미사용 학생 대안
 11. 교사 관찰 포인트와 세특 기록에 활용 가능한 실제 장면
@@ -76,7 +85,9 @@ ${unchecked.length?unchecked.map(function(x){return '- '+x}).join('\n'):'- 핵�
 - 가정 과제와 사교육 도움에 따라 성과가 갈리는 설계를 피할 것.
 - 화려한 결과물보다 수업 중 학습 과정과 수정 증거를 우선할 것.
 - 모든 학생에게 4단계 확장을 요구하지 말 것.
-- 실제 학교 평가계획과 성적 처리 규정을 대신한다고 표현하지 말 것.`}
+- 실제 학교 평가계획과 성적 처리 규정을 대신한다고 표현하지 말 것.
+- 수업 밖 가정 과제형 수행평가로 설계하지 말 것.
+- 학생 자기평가서를 세특 문장으로 그대로 옮기도록 안내하지 말 것.`}
 function bind(){el('a_method').addEventListener('change',updateMethod);document.querySelectorAll('[name="taskCheck"]').forEach(function(x){x.addEventListener('change',updateRisk)});el('generateBtn').addEventListener('click',function(){var p=makePrompt();if(p)el('promptOutput').textContent=p});el('copyBtn').addEventListener('click',function(){U.copyText(el('promptOutput').textContent).then(function(){U.toast('프롬프트를 복사했습니다.');})});el('saveBtn').addEventListener('click',function(){U.downloadJson('수행평가_설계_'+(val('a_subject')||'과목')+'.json',{tool:'assessment',version:T.version,savedAt:new Date().toISOString(),data:collect()})});el('loadFile').addEventListener('change',function(e){var f=e.target.files[0];if(!f)return;U.readJsonFile(f).then(function(j){restore(j.data||j);U.toast('설계 내용을 불러왔습니다.');}).catch(function(){U.toast('JSON 파일을 읽지 못했습니다.');});e.target.value='';})}
 render();updateMethod();updateRisk();bind();
 })();
